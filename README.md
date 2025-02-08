@@ -1,5 +1,9 @@
 # README
 ---
+# 開発環境　
+* Apple M3
+* macOS sequoia 15.1.1
+---
 # 開発言語
 * Ruby version 3.3.0 
 * Rails version 7.2.2.1
