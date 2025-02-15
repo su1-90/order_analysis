@@ -18,6 +18,36 @@
   </head>
 
   <body>
+    <header>
+      <nav class="navber navber-expand-lg navber-light bg-light">
+        <a class="navber-brand" href="#">MyApp</a>
+        <ul class="navber-nav ml-auto">
+          <% if user_signed_in? %>
+            <li class="nav-item"><%= link_to 'ログアウト', destroy_user_session_path, method: :delete, class: "nav-link" %></li>
+            <% if current_user.is_admin? %>
+              <li class="nav-item"><%= link_to 'ユーザー登録', new_user_registration_path, class: "nav-link" %></li>
+            <% end %>
+          <% elsif !user_signed_in? %>
+            <li class="nav-item"><%= link_to 'ログイン', new_user_session_path, class: "nav-link" %></li>
+          <% end %>
+        </ul>
+      </nav>
+    </header>
+    
     <%= yield %>
+
+    <div class="container">
+      <% flash.each do |key, value| %>
+        <div class="alert alert-<%= key %>">
+          <%= value %>
+        </div>
+      <% end %>
+    </div>
+
+    <footer class="footer">
+      <div class="container">
+        <span class="text-muted">© MyApp 2025</span>
+      </div>
+    </footer>
   </body>
 </html>
