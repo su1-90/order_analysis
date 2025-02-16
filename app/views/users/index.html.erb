@@ -1,0 +1,35 @@
+<h1>ユーザーリスト</h1>
+
+<div class="card">
+  <div class="card-body">
+    <table class="table table-bordered">
+      <thead>
+        <tr>
+          <th>コード</th>
+          <th>権限</th>
+          <th></th>
+        </tr>
+      </thead>
+      <tbody>
+        <% @users.each do |user| %>
+          <tr>
+            <td><%= user.user_code %></td>
+            <td>
+              <% if user.admin? %>
+                <span class="badge bg-success">管理者</span>
+              <% else %>
+                <span class="badge bg-secondary">一般</span>
+              <% end %>
+            </td>
+            <td>
+              <%= link_to "編集", edit_user_path(user), class: "btn btn-primary btn-sm" %> |
+              <%= link_to "削除", user_path(user), method: :delete, data: { confirm: 'Are you sure?' }, class: "btn btn-danger btn-sm" %>
+            </td>
+          </tr>
+        <% end %>
+      </tbody>
+    </table>
+
+    <%= paginate @users, theme: 'bootstrap4' %>
+  </div>
+</div>

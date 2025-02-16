@@ -62,3 +62,5 @@ end
 gem "devise"
 gem "dotenv-rails"
 gem "ruby-openai"
+gem "kaminari"
+gem "bootstrap5-kaminari-views"
