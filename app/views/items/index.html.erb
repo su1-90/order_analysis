@@ -1,0 +1,36 @@
+<div class="container mt-5">
+  <div class="row">
+    <div class="col-md-8">
+      <h2 class="text-center">アイテム一覧</h2>
+      <table class="table table-hover">
+        <thead>
+          <tr>
+            <th>商品コード</th>
+            <th>商品名</th>
+            <th></th>
+          </tr>
+        </thead>
+        <tbody>
+          <% @items.each do |item| %>
+            <tr>
+              <td><%= item.product_code %></td>
+              <td><%= item.name %></td>
+              <td><%= link_to '詳細', item_path(item), class: 'btn btn-primary' %></td>
+            </tr>
+          <% end %>
+        </tbody>
+      </table>
+      <% if currrent_user.admin?%>
+        <%= link_to '新規アイテム登録', new_item_path, class: 'btn btn-success' %>
+      <% end %>
+    </div>
+
+    <div class="col-md-4">
+      <div class="card">
+        <div class="card-header">
+          Information
+        </div>
+        <div class="card-body">
+          <% if @informations.each do |infomation| %>
+            <p><%= infomation.title %></p>
+            <p><%= infomation.message %></p>
