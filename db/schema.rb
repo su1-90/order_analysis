@@ -10,9 +10,19 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.2].define(version: 2025_02_16_022934) do
+ActiveRecord::Schema[7.2].define(version: 2025_02_16_053532) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "items", force: :cascade do |t|
+    t.bigint "product_code", null: false
+    t.string "name", limit: 255, null: false
+    t.date "order_date", null: false
+    t.integer "order_quantity", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["product_code"], name: "index_items_on_product_code"
+  end
 
   create_table "users", force: :cascade do |t|
     t.string "encrypted_password", default: "", null: false
