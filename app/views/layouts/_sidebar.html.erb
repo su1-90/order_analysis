@@ -1,0 +1,23 @@
+<div class="sidebar">
+  <h3>Order Analysis</h3>
+  <ul class="list-group">
+    <% if current_user %>
+      <% if current_user.admin? %>
+        <li class="list-group-item"><%= link_to 'インポート', '#' %></li>
+        <li class="list-group-item"><%= link_to 'エクスポート', '#' %></li>
+        <li class="list-group-item"><%= link_to 'Info 編集', informations_path %></li>
+        <li class="list-group-item"><%= link_to 'ユーザーリスト', users_path %></li>
+        <li class="list-group-item"><%= link_to 'ユーザー登録', new_user_registration_path %></li>
+      <% else %>
+        <li class="list-group-item"><%= link_to 'エクスポート', '#' %></li>
+      <% end %>
+      <li class="list-group-item">
+        <%= form_with(url: destroy_user_session_path, method: :delete, data: { turbo: false }, class: "d-inline") do %>
+          <%= submit_tag 'ログアウト', class: "btn btn-link list-group-item-action p-0 m-0" %>
+        <% end %>
+      </li>
+    <% else %>
+      <li class="list-group-item"><%= link_to 'ログイン', new_user_session_path %></li>
+    <% end %>
+  </ul>
+</div>

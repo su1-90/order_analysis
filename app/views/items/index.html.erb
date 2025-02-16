@@ -1,7 +1,7 @@
 <div class="container mt-5">
+  <h2 class="text-center">アイテム一覧</h2>
   <div class="row">
     <div class="col-md-8">
-      <h2 class="text-center">アイテム一覧</h2>
       <table class="table table-hover">
         <thead>
           <tr>
@@ -20,17 +20,29 @@
           <% end %>
         </tbody>
       </table>
-      <% if currrent_user.admin?%>
+      <% if current_user.admin? %>
         <%= link_to '新規アイテム登録', new_item_path, class: 'btn btn-success' %>
       <% end %>
     </div>
-
     <div class="col-md-4">
-      <div class="card">
-        <div class="card-header">
-          Information
-        </div>
-        <div class="card-body">
-          <% if @informations.each do |infomation| %>
-            <p><%= infomation.title %></p>
-            <p><%= infomation.message %></p>
+      <h3 class="text-center">お知らせ</h3>
+      <div class="list-group">
+        <% if @informations.any? %>
+          <% @informations.each do |info| %>
+            <div class="list-group-item">
+              <h5 class="mb-1"><%= info.title %></h5>
+              <p class="mb-1"><%= info.message %></p>
+            </div>
+          <% end %>
+        <% else %>
+          <div class="list-group-item">
+            <p class="mb-1">現在お知らせはありません</p>
+          </div>
+        <% end %>
+      </div>
+      <% if current_user.admin? %>
+        <%= link_to '新規お知らせ作成', new_information_path, class: 'btn btn-warning mt-3' %>
+      <% end %>
+    </div>
+  </div>
+</div>

@@ -1,17 +1,15 @@
-<%= paginator.render do %>
+<% if paginator.total_pages > 1 %>
   <nav>
-    <ul class="pagination">
-      <%= first_page_tag unless current_page.first? %>
-      <%= prev_page_tag unless current_page.first? %>
-      <% each_page do |page| %>
-        <% if page.left_outer? || page.right_outer? || page.inside_window? %>
-          <%= page_tag page %>
-        <% elsif !page.was_truncated? -%>
-          <%= gap_tag %>
+    <ul class="pagination justify-content-center">
+      <%= link_to_previous_page paginator, 'Previous', class: 'page-link' unless paginator.first_page? %>
+      <% (1..paginator.total_pages).each do |page| %>
+        <% if page == paginator.current_page %>
+          <li class="page-item active"><span class="page-link"><%= page %></span></li>
+        <% else %>
+          <li class="page-item"><%= link_to page, params.permit(:page).merge(page: page), class: 'page-link' %></li>
         <% end %>
       <% end %>
-      <%= next_page_tag unless current_page.last? %>
-      <%= last_page_tag unless current_page.last? %>
+      <%= link_to_next_page paginator, 'Next', class: 'page-link' unless paginator.last_page? %>
     </ul>
   </nav>
 <% end %>

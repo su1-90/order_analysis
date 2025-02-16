@@ -1,10 +1,11 @@
 class ItemsController < ApplicationController
+  before_action :authenticate_user!
   before_action :ensure_correct_admin, only: [:new, :create, :edit, :update, :destroy]
   before_action :set_item, only: [:show, :edit, :update, :destroy]
 
   def index
     @items = Item.all.order(id: :desc)
-    @informations = Information.all.order(id: :desc) 
+    @informations = Information.all.order(id: :desc)  # informationのデータを取得
   end
 
   def show
@@ -45,11 +46,11 @@ class ItemsController < ApplicationController
     params.require(:item).permit(:product_code, :name, :order_date, :order_quantity)
   end
 
-def ensure_correct_admin
-  unless current_user.admin?
-    redirect_to root_path, notice: 'You are not authorized to access this page.'
+  def ensure_correct_admin
+    unless current_user.is_admin?
+      redirect_to root_path, notice: 'You are not authorized to access this page.'
+    end
   end
-end
 
   def set_item
     @item = Item.find(params[:id])

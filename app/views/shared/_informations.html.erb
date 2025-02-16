@@ -1,0 +1,5 @@
+<% if current_user.admin? %>
+  <%= form_with(model: @information, url: info_path(@information), local: true) do |form| %>
+    <%# ... (フォームの内容) %>
+  <% end %>
+<% end %>

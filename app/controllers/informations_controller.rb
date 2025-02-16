@@ -1,9 +1,9 @@
 class InformationsController < ApplicationController
   before_action :set_information, only: [:edit, :update]
 
-  def new
-    @information = Information.new
-  end
+  # def new
+  #   @information = Information.new
+  # end
 
   def create
     @information = Information.new(information_params)

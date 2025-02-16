@@ -4,7 +4,19 @@ class User < ApplicationRecord
 
   validates :user_code, presence: true, uniqueness: true
 
+  def email_required?
+    false
+  end
+
+  def email_changed?
+    false
+  end
+
+  def will_save_change_to_email?
+    false
+  end
+
   def admin?
-    self.admin # または self.is_admin など、admin 属性の名前
+    self.admin
   end
 end

@@ -1,2 +1,24 @@
 @import 'bootstrap/scss/bootstrap';
 @import 'bootstrap-icons/font/bootstrap-icons';
+
+
+html, body {
+  height: 100%;
+}
+
+body {
+  display: flex;
+  flex-direction: column;
+}
+
+main {
+  flex: 1;
+}
+
+.footer {
+  background: #f8f9fa;
+  padding: 1rem 0;
+  text-align: center;
+  width: 100%;
+  margin-top: auto;
+}

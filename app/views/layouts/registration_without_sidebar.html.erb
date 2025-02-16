@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Order Analysis</title>
+    <%= csrf_meta_tags %>
+    <%= csp_meta_tag %>
+
+    <%= stylesheet_link_tag 'application', media: 'all' %>
+    <%= javascript_include_tag 'application' %>
+  </head>
+
+  <body class="d-flex flex-column min-vh-100">
+    <%= render 'layouts/header' %>
+    <main class="flex-grow-1">
+      <%= yield %>
+    </main>
+    <footer class="footer mt-auto py-3 bg-light">
+      <div class="container">
+        <p>お問い合わせ先：~~</p>
+      </div>
+    </footer>
+  </body>
+</html>

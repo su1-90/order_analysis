@@ -21,15 +21,16 @@
                 <span class="badge bg-secondary">一般</span>
               <% end %>
             </td>
-            <td>
-              <%= link_to "編集", edit_user_path(user), class: "btn btn-primary btn-sm" %> |
-              <%= link_to "削除", user_path(user), method: :delete, data: { confirm: 'Are you sure?' }, class: "btn btn-danger btn-sm" %>
+            <td class="d-flex align-items-center">
+              <%= link_to "編集", edit_user_path(user), class: "btn btn-primary btn-sm" %>
+              <span class="mx-2">|</span>
+              <%= button_to "削除", user_path(user), method: :delete, data: { confirm: 'Are you sure?' }, class: "btn btn-danger btn-sm ml-3" %>
             </td>
           </tr>
         <% end %>
       </tbody>
     </table>
 
-    <%= paginate @users, theme: 'bootstrap4' %>
+    <%= render partial: 'kaminari/paginator', locals: { paginator: @users } %>
   </div>
 </div>
