@@ -1,7 +1,9 @@
 class UsersController < ApplicationController
   before_action :ensure_correct_admin, only: [:edit, :update, :destroy]
   before_action :admin_user, only: [:new, :create]
-  layout "user_registration", only: [:new, :create]
+  layout "user_registration", only: [:new, :create,]
+  layout "no_sidebar", only: [:index]
+
   def index
     @users = User.order(id: :desc).page(params[:page]).per(10)
   end

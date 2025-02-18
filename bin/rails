@@ -1,4 +1,11 @@
 #!/usr/bin/env ruby
+
+require "fileutils"
+server_pid_path = File.expand_path("../../tmp/pids/server.pid", __FILE__)
+if File.exist?(server_pid_path)
+  FileUtils.rm(server_pid_path)
+end
+
 APP_PATH = File.expand_path("../config/application", __dir__)
 require_relative "../config/boot"
 require "rails/commands"

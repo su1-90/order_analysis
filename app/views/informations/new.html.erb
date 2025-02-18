@@ -1,0 +1,21 @@
+<div class="container-fluid vh-100 d-flex justify-content-center align-items-center" style="padding-right: 500px;">
+  <div class="row w-100 justify-content-center">
+    <div class="col-md-6 offset-md-3" style="max-width: 800px; min-width: 600px;">
+      <div class="border rounded p-4" style="border-color: gray;">
+        <h2 class="text-left ml-3">新規お知らせ作成</h2>
+        <%= form_with(model: @information, url: informations_path, local: true) do |f| %>
+          <div class="form-group mt-4">
+            <%= f.label :message, 'メッセージ' %>
+            <%= f.text_area :message, class: 'form-control', rows: 5 %>
+          </div>
+          <div class="text-center mt-4">
+            <%= f.submit '完了', class: 'btn btn-primary' %>
+          </div>
+        <% end %>
+        <div class="text-center mt-3">
+          <%= link_to '戻る', informations_path, class: 'btn btn-secondary' %>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

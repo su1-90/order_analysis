@@ -1,36 +1,45 @@
-<h1>ユーザーリスト</h1>
+<div class="container mt-5 pt-5" style="margin-top: 200px; text-align: center;">
+  <h1>ユーザーリスト</h1>
 
-<div class="card">
-  <div class="card-body">
-    <table class="table table-bordered">
-      <thead>
-        <tr>
-          <th>コード</th>
-          <th>権限</th>
-          <th></th>
-        </tr>
-      </thead>
-      <tbody>
-        <% @users.each do |user| %>
+  <div class="card">
+    <div class="card-body">
+      <table class="table table-bordered">
+        <thead>
           <tr>
-            <td><%= user.user_code %></td>
-            <td>
-              <% if user.admin? %>
-                <span class="badge bg-success">管理者</span>
-              <% else %>
-                <span class="badge bg-secondary">一般</span>
-              <% end %>
-            </td>
-            <td class="d-flex align-items-center">
-              <%= link_to "編集", edit_user_path(user), class: "btn btn-primary btn-sm" %>
-              <span class="mx-2">|</span>
-              <%= button_to "削除", user_path(user), method: :delete, data: { confirm: 'Are you sure?' }, class: "btn btn-danger btn-sm ml-3" %>
-            </td>
+            <th>コード</th>
+            <th>権限</th>
+            <th></th>
           </tr>
-        <% end %>
-      </tbody>
-    </table>
+        </thead>
+        <tbody>
+          <% @users.each do |user| %>
+            <tr>
+              <td><%= user.user_code %></td>
+              <td>
+                <% if user.admin? %>
+                  <span class="badge bg-success">管理者</span>
+                <% else %>
+                  <span class="badge bg-secondary">一般</span>
+                <% end %>
+              </td>
+              <td class="d-flex align-items-center">
+                <%= link_to "編集", edit_user_path(user), class: "btn btn-primary btn-sm" %>
+                <span class="mx-2">|</span>
+                <%= button_to "削除", user_path(user), method: :delete, data: { confirm: 'Are you sure?' }, class: "btn btn-danger btn-sm ml-3" %>
+              </td>
+            </tr>
+          <% end %>
+        </tbody>
+      </table>
 
-    <%= render partial: 'kaminari/paginator', locals: { paginator: @users } %>
+      <div class="d-flex justify-content-center mt-4">
+        <div style="flex: 1; text-align: left;">
+          <%= link_to '戻る', informations_path, class: 'btn btn-secondary', style: 'margin-left: 33.33%;' %>
+        </div>
+        <div>
+          <%= render partial: 'kaminari/paginator', locals: { paginator: @users } %>
+        </div>
+      </div>
+    </div>
   </div>
 </div>

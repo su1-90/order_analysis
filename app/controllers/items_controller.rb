@@ -1,58 +1,40 @@
-class ItemsController < ApplicationController
-  before_action :authenticate_user!
-  before_action :ensure_correct_admin, only: [:new, :create, :edit, :update, :destroy]
-  before_action :set_item, only: [:show, :edit, :update, :destroy]
-
+class InformationsController < ApplicationController
   def index
-    @items = Item.all.order(id: :desc)
-    @informations = Information.all.order(id: :desc)  # informationのデータを取得
-  end
+    @items = Item.all.order(id: :"DESC")
 
-  def show
-  end
-
-  def new
-    @item = Item.new
-  end
-
-  def create
-    @item = Item.new(item_params)
-    if @item.save
-      redirect_to @item, notice: 'Item was successfully created.'
-    else
-      render :new
+    @informations = Information.all
+    if @informations.empty?
+      @default_message = "現在お知らせはありません"
     end
   end
 
-  def edit
+  def import
+    @tems = Items.import(params[:file])
+    @items.save!
+    redirect_to products_path, notice: "CSV インポートが完了しました。"
   end
 
-  def update
-    if @item.update(item_params)
-      redirect_to @item, notice: 'Item was successfully updated.'
+  def download
+    
+  end
+
+
+  def edit_info
+    @information = Information.find(params[:id])
+  end
+
+  def update_info
+    @information = Information.find(params[:id])
+    if @information.update(information_params)
+      redirect_to informations_path, notice: "お知らせを更新しました"
     else
-      render :edit
+      render :edit_info
     end
-  end
-
-  def destroy
-    @item.destroy!
-    redirect_to items_path, notice: 'Item was successfully destroyed.'
   end
 
   private
 
-  def item_params
-    params.require(:item).permit(:product_code, :name, :order_date, :order_quantity)
-  end
-
-  def ensure_correct_admin
-    unless current_user.is_admin?
-      redirect_to root_path, notice: 'You are not authorized to access this page.'
-    end
-  end
-
-  def set_item
-    @item = Item.find(params[:id])
+  def information_params
+    params.require(:information).permit(:title, :message)
   end
 end

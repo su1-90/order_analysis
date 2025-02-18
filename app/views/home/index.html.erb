@@ -1,30 +1,26 @@
-<div class="container bg-light pt-5">
+<div class="container-fluid py-3 fixed-top header" style="background-color: #223A70; color: white;">
   <div class="row">
-    <div class="col-12 text-center">
-      <h1>トップページ</h1>
+    <div class="col-12">
+      <h1 class="text-left">Order Analysis</h1>
     </div>
   </div>
+</div>
 
-  <div class="row justify-content-center">
+<div class="container d-flex align-items-center justify-content-center min-vh-100 mt-5">
+  <div class="row justify-content-center w-100">
     <div class="col-md-8">
       <div class="card shadow">
-        <div class="card-body">
-          <h2 class="card-title fw-bold mb-4">Order Analysis</h2>
+        <div class="card-body text-center">
+          <h2 class="card-title fw-bold mb-4" style="color: #223A70;">Order Analysis</h2>
           <div class="description mb-5">
-            <p class="fs-5 text-secondary">これまでのデータを入力するだけ</p>
-            <p class="fs-5 text-secondary">勘と経験に頼らない予測を算出</p>
+            <p class="fs-5 text-dark">これまでのデータを入力するだけ</p>
+            <p class="fs-5 text-dark">勘と経験に頼らない予測を算出</p>
           </div>
           <div class="text-center">
-            <%= link_to "ログイン >>", new_user_session_path, class: "btn btn-primary btn-lg px-5 py-3" %>
+            <%= link_to "ログイン　>", new_user_session_path, class: "btn btn-primary px-4 py-2", style: "font-size: 14px; background-color: #223A70; border-color: #223A70;" %>
           </div>
         </div>
       </div>
-    </div>
-  </div>
-
-  <div class="row">
-    <div class="col-12 text-center mt-5">
-      <p>お問い合わせ先: ~~</p>
     </div>
   </div>
 </div>

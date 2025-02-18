@@ -7,6 +7,7 @@
   <%= csp_meta_tag %>
 
   <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
   <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
 </head>
 <body class="d-flex flex-column min-vh-100">
@@ -22,22 +23,13 @@
 
   <div class="container-fluid flex-grow-1">
     <div class="row">
-      <% if !current_page?(root_path) && !current_page?(new_user_session_path) %>
-        <div class="col-md-2">
-          <%= render 'layouts/sidebar' %>
-        </div>
-        <div class="col-md-10">
-          <%= yield %>
-        </div>
-      <% else %>
-        <%= yield %>
-      <% end %>
+      <%= yield %>
     </div>
   </div>
 
   <footer class="footer mt-auto py-3 bg-light">
-    <div class="container">
-      <span class="text-muted">© Order Analysis 2025</span>
+    <div class="container text-right">
+      <span class="text-muted text-right">© Order Analysis 2025</span>
     </div>
   </footer>
 </body>

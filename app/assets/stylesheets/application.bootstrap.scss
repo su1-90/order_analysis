@@ -18,7 +18,30 @@ main {
 .footer {
   background: #f8f9fa;
   padding: 1rem 0;
-  text-align: center;
   width: 100%;
   margin-top: auto;
 }
+
+.header {
+  color: white;
+  padding: 1rem 0;
+  position: fixed;
+  width: 100%;
+  top: 0;
+}
+
+.container {
+  margin-top: 5rem;
+  flex: 1;
+}
+
+.card {
+  max-width: 100%;
+  margin: auto;
+}
+
+.login-button {
+  padding: 0.5rem 1rem; /* padding を調整 */
+  font-size: 14px; /* フォントサイズを小さく */
+}
+

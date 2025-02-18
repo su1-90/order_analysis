@@ -1,0 +1,4 @@
+ja:
+  devise:
+    failure:
+      invalid_login: "ログインに失敗しました。ユーザコードまたはパスワードが正しくありません。"

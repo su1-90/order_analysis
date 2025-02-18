@@ -5,6 +5,15 @@ class ApplicationController < ActionController::Base
   before_action :configure_permitted_parameters, if: :devise_controller?
   before_action :authenticate_user!
 
+  def create
+  end
+
+  def informations
+    @informations = Information.all
+  end
+
+  helper_method :informations # viewで参照可能にする
+
   protected
 
   def configure_permitted_parameters

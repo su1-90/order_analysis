@@ -6,7 +6,13 @@ Rails.application.routes.draw do
   }
   
   resources :users, only: [:index, :new, :create, :edit, :update, :destroy]
-  resources :items
+  resources :items do
+    collection do
+      post :import
+      get :download
+    end
+  end
+
   resources :informations
 
 end
