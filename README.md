@@ -33,7 +33,7 @@ https://www.figma.com/design/c6RvyDDqYy68EmfK6WMkfl/%E7%B5%82%E5%A3%B2%E7%AE%A1%
 ![Image](/public/screen-transition-diagram.png)
 
 # 開発要件
-[ ] Ruby on Railsを使ったアプリケーションであること
+-[ ] Ruby on Railsを使ったアプリケーションであること
 [ ] HerokuもしくはAWS EC2を使ってデプロイすること
 [ ] トップページを作成すること
 [ ] トップページでサービスの概要やコンセプト、機能についての説明がなされていること
