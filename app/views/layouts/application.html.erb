@@ -8,7 +8,6 @@
 
   <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
   <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
-  <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
 </head>
 <body class="d-flex flex-column min-vh-100">
   <% if !current_page?(root_path) && !current_page?(new_user_session_path) %>
@@ -19,6 +18,15 @@
         </ul>
       </nav>
     </header>
+  <% end %>
+
+  <% flash.each do |message_type, message| %>
+    <div class="alert alert-<%= message_type %> alert-dismissible fade show" role="alert">
+      <%= message %>
+      <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+        <span aria-hidden="true">&times;</span>
+      </button>
+    </div>
   <% end %>
 
   <div class="container-fluid flex-grow-1">
@@ -32,5 +40,8 @@
       <span class="text-muted text-right">© Order Analysis 2025</span>
     </div>
   </footer>
+
+  <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script> <%# jQueryの読み込み %>
+  <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %> <%# JavaScriptの読み込み %>
 </body>
 </html>

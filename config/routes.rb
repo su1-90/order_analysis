@@ -4,15 +4,18 @@ Rails.application.routes.draw do
     registrations: "users/registrations",
     sessions: "users/sessions"
   }
-  
+
   resources :users, only: [:index, :new, :create, :edit, :update, :destroy]
   resources :items do
     collection do
-      post :import
-      get :download
+      post :import_csv
+      get :export
+      get :import_form
     end
   end
 
   resources :informations
 
+  post "/forecasts", to: "forecasts#create"
+  get "export_forecast", to: "forecasts#export"
 end

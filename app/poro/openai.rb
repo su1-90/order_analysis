@@ -20,9 +20,3 @@ class Openai
     response.dig("choices", 0, "message", "content")
   end
 end
-
-# Openai.new(@order_quantity).post これをコントローラー側で呼び出す
-# それをビューに渡す
-#
-#
-# 本日までの確定受注数量データを渡します。次の日曜日までの予測受注数量を教えてください。

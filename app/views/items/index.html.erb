@@ -27,7 +27,7 @@
     <div class="col-md-4">
       <h3 class="text-center">お知らせ</h3>
       <div class="list-group">
-        <% if @informations.any? %>
+        <% if @informations.present? %>
           <% @informations.each do |info| %>
             <div class="list-group-item">
               <h5 class="mb-1"><%= info.title %></h5>

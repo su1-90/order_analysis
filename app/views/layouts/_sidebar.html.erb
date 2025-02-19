@@ -1,17 +1,19 @@
-<div class="sidebar vh-100 d-flex flex-column" style="background-color: #223A70; color: white; margin-left: -15px; width: 220px; justify-content: flex-start; align-items: center;">
+<div class="sidebar d-flex flex-column" style="background-color: #223A70; color: white; margin-left: -15px; width: 220px; height: 100vh; justify-content: flex-start; align-items: center; overflow-y: auto;">
   <h3 class="text-center" style="margin-top: 40px;">Order Analysis</h3>
   <ul class="list-group mt-auto">
     <% if current_user %>
       <% if current_user.admin? %>
-        <li class="list-group-item bg-transparent border-0"><%= link_to 'インポート', '#', class: 'text-white' %></li>
-        <li class="list-group-item bg-transparent border-0"><%= link_to 'エクスポート', '#', class: 'text-white' %></li>
+        <li class="list-group-item bg-transparent border-0"><%= link_to 'インポート', import_form_items_path, class: 'text-white' %></li>
+      <% end %>
+      <li class="list-group-item bg-transparent border-0">
+        <%= link_to 'エクスポート', export_forecast_path(format: :csv), class: 'text-white' %>
+      </li>
+      <% if current_user.admin? %>
         <li class="list-group-item bg-transparent border-0">
           <%= link_to 'Info 編集', Information.any? ? edit_information_path(Information.first) : new_information_path, class: 'text-white' %>
         </li>
         <li class="list-group-item bg-transparent border-0"><%= link_to 'ユーザーリスト', users_path, class: 'text-white' %></li>
         <li class="list-group-item bg-transparent border-0"><%= link_to 'ユーザー登録', new_user_registration_path, class: 'text-white' %></li>
-      <% else %>
-        <li class="list-group-item bg-transparent border-0"><%= link_to 'エクスポート', '#', class: 'text-white' %></li>
       <% end %>
     <% else %>
       <li class="list-group-item bg-transparent border-0"><%= link_to 'ログイン', new_user_session_path, class: 'text-white' %></li>
