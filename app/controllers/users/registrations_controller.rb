@@ -10,7 +10,6 @@ class Users::RegistrationsController < Devise::RegistrationsController
       yield resource if block_given?
       if resource.active_for_authentication?
         set_flash_message :notice, :signed_up if is_flashing_format?
-        sign_in(resource_name, resource)
         respond_with resource, location: after_sign_up_path_for(resource)
       else
         set_flash_message :notice, :"signed_up_but_unconfirmed" if is_flashing_format?
@@ -40,7 +39,7 @@ class Users::RegistrationsController < Devise::RegistrationsController
 
   def admin_only
     unless user_signed_in? && current_user.admin?
-      redirect_to root_path, notice: "You are not authorized to access this page."
+      redirect_to root_path, notice: "このページにアクセスする権限がありません."
     end
   end
 end

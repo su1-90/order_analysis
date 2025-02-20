@@ -1,0 +1,11 @@
+ja:
+  activerecord:
+    errors:
+      models:
+        information:
+          attributes:
+            message:
+              blank: 'メッセージを入力してから完了してください'
+    attributes:
+      information:
+        message: ""

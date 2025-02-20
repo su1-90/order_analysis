@@ -1,8 +1,8 @@
 class UsersController < ApplicationController
   before_action :ensure_correct_admin, only: [:edit, :update, :destroy]
   before_action :admin_user, only: [:new, :create]
-  layout "user_registration", only: [:new, :create,]
-  layout "no_sidebar", only: [:index]
+  layout "user_registration", only: [:new, :create]
+  layout "no_sidebar", only: [:index, :edit]
 
   def index
     @users = User.order(id: :desc).page(params[:page]).per(10)
@@ -29,7 +29,7 @@ class UsersController < ApplicationController
   def update
     @user = User.find(params[:id])
     if @user.update(user_params)
-      redirect_to users_path, notice: 'User was successfully updated.'
+      redirect_to users_path, notice: 'ユーザーは正常に更新されました'
     else
       render :edit
     end
@@ -37,10 +37,16 @@ class UsersController < ApplicationController
 
   def destroy
     @user = User.find(params[:id])
-    @user.destroy!
-    redirect_to users_path, notice: 'User was successfully destroyed.'
-  rescue ActiveRecord::RecordNotDestroyed
-    redirect_to users_path, alert: 'Userの削除に失敗しました。#{e.message}'
+    if @user.destroy
+      flash[:notice] = 'ユーザーは正常に破棄されました'
+    else
+      flash[:alert] = @user.errors.full_messages.join(', ')
+    end
+
+    respond_to do |format|
+      format.html { redirect_to users_path }
+      format.turbo_stream
+    end
   end
 
   private
@@ -51,7 +57,7 @@ class UsersController < ApplicationController
 
   def ensure_correct_admin
     unless current_user.admin?
-      redirect_to root_path, notice: 'You are not authorized to access this page.'
+      redirect_to root_path, notice: 'このページにアクセスする権限がありません'
     end
   end
 

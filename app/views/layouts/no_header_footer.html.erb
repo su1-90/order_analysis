@@ -15,6 +15,11 @@
           <%= render 'layouts/sidebar' %>
         </div>
         <div class="col-md-9 mt-5">
+          <div id="flash-messages-container">
+            <%= turbo_frame_tag "flash-messages-frame" do %>
+              <%= render 'layouts/flash_messages' %>
+            <% end %>
+          </div>
           <%= yield %>
         </div>
       </div>

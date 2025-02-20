@@ -1,6 +1,16 @@
-import Rails from "@rails/ujs";
-Rails.start();
+document.addEventListener('turbo:load', () => {
+  handleFlashMessages();
+});
 
-// import "@hotwired/turbo-rails"; // コメントアウトしてTurboを無効にする
-import "controllers";
-import * as bootstrap from "bootstrap";
+document.addEventListener('turbo:frame-load', (event) => {
+  if (event.target.id === 'flash-messages-frame') {
+    handleFlashMessages();
+  }
+});
+
+function handleFlashMessages() {
+  const alerts = document.querySelectorAll('[id^="flash-message-"]');
+  alerts.forEach(alert => {
+    alert.classList.add('show');
+  });
+}

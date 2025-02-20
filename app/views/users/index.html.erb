@@ -25,7 +25,7 @@
               <td class="d-flex align-items-center">
                 <%= link_to "編集", edit_user_path(user), class: "btn btn-primary btn-sm" %>
                 <span class="mx-2">|</span>
-                <%= button_to "削除", user_path(user), method: :delete, data: { confirm: 'Are you sure?' }, class: "btn btn-danger btn-sm ml-3" %>
+                <%= button_to "削除", user_path(user), method: :delete, class: "btn btn-danger btn-sm ml-3 delete-button", id: "delete-#{user.id}" %>
               </td>
             </tr>
           <% end %>
@@ -34,7 +34,7 @@
 
       <div class="d-flex justify-content-center mt-4">
         <div style="flex: 1; text-align: left;">
-          <%= link_to '戻る', informations_path, class: 'btn btn-secondary', style: 'margin-left: 33.33%;' %>
+          <%= link_to '戻る', informations_path, class: 'btn btn-secondary', style: 'margin-left: 33.33%;', data: { turbo: false } %>
         </div>
         <div>
           <%= render partial: 'kaminari/paginator', locals: { paginator: @users } %>
@@ -43,3 +43,25 @@
     </div>
   </div>
 </div>
+
+<script>
+document.addEventListener("DOMContentLoaded", function() {
+  const deleteButtons = document.querySelectorAll(".delete-button");
+  const adminUsersCount = <%= @users.select { |user| user.admin? }.count %>;
+
+  deleteButtons.forEach(button => {
+    button.addEventListener("click", function(event) {
+      if (adminUsersCount <= 1) {
+        event.preventDefault();
+        alert("権限ユーザーが1人しかいないため、削除できません。");
+      } else {
+        // デフォルトの削除操作を実行
+        const confirmation = confirm("本当に削除してもよろしいですか？");
+        if (!confirmation) {
+          event.preventDefault();
+        }
+      }
+    });
+  });
+});
+</script>

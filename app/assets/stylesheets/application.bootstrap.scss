@@ -1,6 +1,17 @@
-@import 'bootstrap/scss/bootstrap';
-@import 'bootstrap-icons/font/bootstrap-icons';
+/* 既存のCSSファイル */
+@use 'bootstrap/scss/bootstrap' as *;
+@use 'bootstrap-icons/font/bootstrap-icons' as *;
 
+.alert {
+  position: fixed;
+  top: 20px;
+  right: 20px;
+  z-index: 1000;
+  min-width: 300px;
+  background-color: rgba(255, 255, 255, 0.9); /* 背景色を設定 */
+  color: black; /* テキスト色を設定 */
+  border: 1px solid black; /* 境界線を設定 */
+}
 
 html, body {
   height: 100%;
@@ -38,6 +49,13 @@ main {
 .card {
   max-width: 100%;
   margin: auto;
+  border-color: #000 !important; /* 枠線の色を濃く設定 */
+  border-width: 2px !important;  /* 枠線の太さを設定 */
+}
+
+.border {
+  border-color: #000 !important; /* すべての枠線の色を濃く設定 */
+  border-width: 2px !important;  /* すべての枠線の太さを設定 */
 }
 
 .login-button {
@@ -45,3 +63,52 @@ main {
   font-size: 14px; /* フォントサイズを小さく */
 }
 
+.custom-checkbox {
+  -webkit-appearance: none;
+  appearance: none;
+  background-color: #fff;
+  border: 2px solid #000; /* 枠線の色と太さを調整 */
+  width: 1.25em;
+  height: 1.25em;
+  border-radius: 0.25em;
+  display: inline-block;
+  position: relative;
+  cursor: pointer;
+}
+
+.custom-checkbox:checked {
+  background-color: #007bff;
+  border-color: #007bff;
+}
+
+.custom-checkbox:checked::before {
+  content: "";
+  display: block;
+  width: 0.5em;
+  height: 0.9em;
+  border: solid #fff;
+  border-width: 0 0.2em 0.2em 0;
+  transform: rotate(45deg);
+  position: absolute;
+  top: 0.1em;
+  left: 0.3em;
+}
+
+/* サイドバー内のリンクとボタン */
+.sidebar a.text-white,
+.sidebar .btn-link,
+.sidebar .submit-button {
+  color: white !important;
+  background-color: transparent !important;
+  border: none !important;
+  text-decoration: none;
+}
+
+.sidebar a.text-white:hover,
+.sidebar .btn-link:hover,
+.sidebar .submit-button:hover {
+  color: white !important;
+  background-color: transparent !important;
+  border: none !important;
+  text-decoration: none;
+}

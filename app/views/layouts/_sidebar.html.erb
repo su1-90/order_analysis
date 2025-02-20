@@ -21,7 +21,7 @@
     <li class="list-group-item bg-transparent border-0" style="margin-block-end: 40px;">
       <% if current_user %>
         <%= form_with(url: destroy_user_session_path, method: :delete, data: { turbo: false }, class: "d-inline") do %>
-          <%= submit_tag 'ログアウト', class: "btn btn-link list-group-item-action p-0 m-0 text-white" %>
+          <%= submit_tag 'ログアウト', class: "btn btn-link list-group-item-action p-0 m-0 text-white submit-button" %>
         <% end %>
       </li>
     <% end %>

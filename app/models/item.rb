@@ -3,10 +3,10 @@ require 'csv'
 class Item < ApplicationRecord
   include Forecastable
 
-  validates :product_code, presence: true, length: { is: 6 }
-  validates :name, presence: true, length: { maximum: 255 }
-  validates :order_date, presence: true
-  validates :order_quantity, presence: true
+  validates :product_code, presence: { message: '商品コードは必須です。' }, length: { is: 6, message: '商品コードは6文字である必要があります。' }
+  validates :name, presence: { message: '名前は必須です。' }, length: { maximum: 255, message: '名前は255文字以内である必要があります。' }
+  validates :order_date, presence: { message: '注文日は必須です。' }
+  validates :order_quantity, presence: { message: '注文数量は必須です。' }
 
   def self.import(file)
     errors = [] # エラーメッセージを保存する配列

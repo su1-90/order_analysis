@@ -8,6 +8,8 @@ module OrderAnalysis
   class Application < Rails::Application
     config.load_defaults 7.2
 
+    config.i18n.default_locale = :ja
+
     config.autoload_paths += %W(#{config.root}/lib #{config.root}/app/controllers/concerns)
   end
 end

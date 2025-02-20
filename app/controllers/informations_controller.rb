@@ -17,7 +17,8 @@ class InformationsController < ApplicationController
     if @information.save
       redirect_to informations_path, notice: 'お知らせが正常に作成されました。'
     else
-      render :new
+      flash.now[:alert] = 'エラーが発生しました。以下のメッセージを確認してください。'
+      render :new, layout: "no_header_footer"
     end
   end
 
@@ -28,7 +29,8 @@ class InformationsController < ApplicationController
     if @information.update(information_params)
       redirect_to informations_path, notice: 'お知らせが正常に更新されました。'
     else
-      render :edit
+      flash.now[:alert] = 'エラーが発生しました。以下のメッセージを確認してください。'
+      render :edit, layout: "no_header_footer"
     end
   end
 

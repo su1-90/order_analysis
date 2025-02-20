@@ -2,3 +2,15 @@ ja:
   devise:
     failure:
       invalid_login: "ログインに失敗しました。ユーザコードまたはパスワードが正しくありません。"
+      already_authenticated: "既にログインしています。"
+    sessions:
+      user:
+        signed_in: "ログインしました。"
+      signed_in: "ログインしました。"
+    registrations:
+      user:
+        signed_up: "アカウントが作成されました。"
+        updated: "アカウント情報が更新されました。"
+    passwords:
+      user:
+        send_instructions: "パスワードリセットの指示を送信しました。"

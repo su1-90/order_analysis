@@ -18,4 +18,11 @@ Rails.application.routes.draw do
 
   post "/forecasts", to: "forecasts#create"
   get "export_forecast", to: "forecasts#export"
+
+  # エラーページのルート定義
+  match "/404", to: "errors#not_found", via: :all
+  match "/500", to: "errors#internal_server_error", via: :all
+
+  # 全てのその他のルート
+  match '*path', to: 'errors#not_found', via: :all
 end
