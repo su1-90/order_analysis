@@ -112,3 +112,24 @@ main {
   border: none !important;
   text-decoration: none;
 }
+
+/* フラッシュメッセージのスタイル */
+.flash-message {
+  position: fixed;
+  top: 70px; /* ヘッダーの高さに合わせて調整 */
+  right: 20px;
+  z-index: 1050; /* 最前面に表示 */
+  width: auto;
+  max-width: 300px;
+  text-align: center;
+}
+
+.alert {
+  position: fixed;
+  bottom: 10px; /* フッターの上に表示 */
+  right: 20px;
+  z-index: 1050; /* 最前面に表示 */
+  width: auto;
+  max-width: 300px;
+  text-align: center;
+}

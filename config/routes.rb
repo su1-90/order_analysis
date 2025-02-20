@@ -6,11 +6,13 @@ Rails.application.routes.draw do
   }
 
   resources :users, only: [:index, :new, :create, :edit, :update, :destroy]
-  resources :items do
+    resources :items do
     collection do
       post :import_csv
+      get :import_csv
       get :export
       get :import_form
+      delete :reset_data
     end
   end
 
