@@ -4,8 +4,7 @@ class ForecastsController < ApplicationController
 
     if items.empty?
       flash[:alert] = "予測データがありません。商品データを登録してください。"
-      redirect_to import_form_items_path
-      return
+      redirect_to import_form_items_path and return
     end
 
     # 遡る日数を指定
@@ -14,8 +13,7 @@ class ForecastsController < ApplicationController
 
     if forecast_data.nil?
       flash[:alert] = "予測データの生成に失敗しました。"
-      redirect_to import_form_items_path
-      return
+      redirect_to import_form_items_path and return
     end
 
     # 生成された予測データをログに記録
@@ -25,6 +23,7 @@ class ForecastsController < ApplicationController
     Rails.logger.info "Generated CSV data: #{csv_data}"
 
     send_data csv_data, filename: "forecasts.csv"
+    return
   end
 
   def export
@@ -32,8 +31,7 @@ class ForecastsController < ApplicationController
 
     if items.empty?
       flash[:alert] = "予測データがありません。商品データを登録してください。"
-      redirect_to root_path
-      return
+      redirect_to root_path and return
     end
 
     # 遡る日数を指定
@@ -42,8 +40,7 @@ class ForecastsController < ApplicationController
 
     if forecast_data.nil?
       flash[:alert] = "予測データの生成に失敗しました。"
-      redirect_to root_path
-      return
+      redirect_to root_path and return
     end
 
     # 生成された予測データをログに記録
@@ -53,5 +50,6 @@ class ForecastsController < ApplicationController
     Rails.logger.info "Generated CSV data: #{csv_data}"
 
     send_data csv_data, filename: "forecasts.csv"
+    return
   end
 end
