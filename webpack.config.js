@@ -43,9 +43,5 @@ module.exports = {
       Buffer: ['buffer', 'Buffer']
     })
   ],
-  node: {
-    global: true,
-    __filename: 'mock',
-    __dirname: 'mock'
-  }
+  node: false
 };
