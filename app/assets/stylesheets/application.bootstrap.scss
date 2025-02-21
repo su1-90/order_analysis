@@ -113,23 +113,60 @@ main {
   text-decoration: none;
 }
 
-/* フラッシュメッセージのスタイル */
-.flash-message {
-  position: fixed;
-  top: 70px; /* ヘッダーの高さに合わせて調整 */
-  right: 20px;
-  z-index: 1050; /* 最前面に表示 */
-  width: auto;
-  max-width: 300px;
-  text-align: center;
+/* レスポンシブデザイン */
+@media (max-width: 1200px) {
+  .alert {
+    top: 80px;
+    right: 15px;
+    max-width: 500px;
+  }
 }
 
-.alert {
-  position: fixed;
-  bottom: 10px; /* フッターの上に表示 */
-  right: 20px;
-  z-index: 1050; /* 最前面に表示 */
-  width: auto;
-  max-width: 300px;
-  text-align: center;
+@media (max-width: 992px) {
+  .alert {
+    top: 60px;
+    right: 10px;
+    max-width: 400px;
+  }
 }
+
+@media (max-width: 768px) {
+  .alert {
+    top: 50px;
+    right: 5px;
+    max-width: 300px;
+  }
+}
+
+/* レスポンシブデザイン */
+@media (max-width: 1200px) {
+  .alert {
+    top: 80px;
+    right: 15px;
+    max-width: 500px;
+  }
+}
+
+@media (max-width: 992px) {
+  .alert {
+    top: 60px;
+    right: 10px;
+    max-width: 400px;
+  }
+}
+
+@media (max-width: 768px) {
+  .alert {
+    top: 50px;
+    right: 5px;
+    max-width: 300px;
+  }
+}
+.alert {
+  position: relative;
+  margin-top: 20px;
+  z-index: 1050;
+  width: 100%;
+  max-width: 100%;
+}
+

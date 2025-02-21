@@ -1,34 +1,37 @@
-<div class="container mt-5">
+<div class="container mt-5" style="max-width: 500px;">
   <div class="row justify-content-center">
-    <div class="col-md-8">
+    <div class="col-md-12">
       <h2 class="text-center">ユーザー登録</h2>
-      <%= form_with(model: @user, url: users_path, html: { class: "form-horizontal" }) do |f| %>
+
+      <div id="error-message" style="display: none; color: red;">ユーザーコードを入力してください。</div>
+
+      <%= form_with(model: @user, url: users_path, local: true, id: "new-user-form") do |f| %>
         <div class="form-group row">
-          <%= f.label :user_code, "ユーザーコード", class: "col-sm-3 col-form-label" %>
-          <div class="col-sm-9">
-            <%= f.text_field :user_code, autofocus: true, class: "form-control" %>
+          <%= f.label :user_code, "ユーザーコード", class: "col-sm-4 col-form-label" %>
+          <div class="col-sm-8">
+            <%= f.text_field :user_code, autofocus: true, class: "form-control", id: "user-code-input" %>
           </div>
         </div>
         <div class="form-group row">
-          <%= f.label :password, "パスワード", class: "col-sm-3 col-form-label" %>
-          <div class="col-sm-9">
-            <%= f.password_field :password, autocomplete: "off", class: "form-control" %>
+          <%= f.label :password, "パスワード", class: "col-sm-4 col-form-label" %>
+          <div class="col-sm-8">
+            <%= f.password_field :password, autocomplete: "off", class: "form-control", id: "password-input" %>
           </div>
         </div>
         <div class="form-group row">
-          <%= f.label :password_confirmation, "パスワードの確認", class: "col-sm-3 col-form-label" %>
-          <div class="col-sm-9">
-            <%= f.password_field :password_confirmation, autocomplete: "off", class: "form-control" %>
+          <%= f.label :password_confirmation, "パスワードの確認", class: "col-sm-4 col-form-label" %>
+          <div class="col-sm-8">
+            <%= f.password_field :password_confirmation, autocomplete: "off", class: "form-control", id: "password-confirmation-input" %>
           </div>
         </div>
         <div class="form-group row">
-          <div class="col-sm-3 col-form-label">管理者権限</div>
-          <div class="col-sm-9">
-            <%= f.check_box :admin, class: "form-check-input" %>
+          <div class="col-sm-4 col-form-label">管理者権限</div>
+          <div class="col-sm-8">
+            <%= f.check_box :admin, id: "admin-checkbox", class: "form-check-input" %>
           </div>
         </div>
         <div class="form-group row">
-          <div class="col-sm-9 offset-sm-3">
+          <div class="col-sm-8 offset-sm-4">
             <%= link_to "戻る", informations_path, class: "btn btn-secondary" %> | 
             <%= f.submit "登録する", class: "btn btn-primary" %>
           </div>
@@ -37,3 +40,35 @@
     </div>
   </div>
 </div>
+
+<script>
+document.addEventListener("DOMContentLoaded", function() {
+  const form = document.getElementById("new-user-form");
+  const userCodeInput = document.getElementById("user-code-input");
+  const passwordInput = document.getElementById("password-input");
+  const passwordConfirmationInput = document.getElementById("password-confirmation-input");
+  const errorMessage = document.getElementById("error-message");
+
+  form.addEventListener("submit", function(event) {
+    let errorMessages = [];
+
+    if (userCodeInput.value.trim() === "") {
+      errorMessages.push("ユーザーコードを入力してください。");
+    }
+    if (passwordInput.value.trim() === "") {
+      errorMessages.push("パスワードを入力してください。");
+    }
+    if (passwordInput.value !== passwordConfirmationInput.value) {
+      errorMessages.push("パスワードとパスワード確認が一致しません。");
+    }
+
+    if (errorMessages.length > 0) {
+      event.preventDefault();
+      errorMessage.innerHTML = errorMessages.join("<br>");
+      errorMessage.style.display = "block";
+    } else {
+      errorMessage.style.display = "none";
+    }
+  });
+});
+</script>

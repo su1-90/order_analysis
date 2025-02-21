@@ -22,12 +22,6 @@
     </header>
   <% end %>
 
-  <div id="flash-messages-container">
-    <%= turbo_frame_tag "flash-messages-frame" do %>
-      <%= render 'layouts/flash_messages' %>
-    <% end %>
-  </div>
-
   <div class="container-fluid flex-grow-1">
     <div class="row">
       <%= yield %>

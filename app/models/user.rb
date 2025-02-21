@@ -3,6 +3,8 @@ class User < ApplicationRecord
          :recoverable, :rememberable, :trackable
 
   validates :user_code, presence: { message: 'ユーザーコードは必須です。' }, uniqueness: { message: 'ユーザーコードは既に存在します。' }
+  validates :password, presence: { message: 'パスワードは必須です。' }, confirmation: { message: 'パスワードが一致しません。' }
+  validates :password_confirmation, presence: { message: 'パスワードの確認は必須です。' }
 
   before_destroy :ensure_not_last_admin, prepend: true
 

@@ -28,4 +28,5 @@ class ApplicationController < ActionController::Base
   def render_500
     render template: 'errors/internal_server_error', layout: false, status: :internal_server_error
   end
+  
 end

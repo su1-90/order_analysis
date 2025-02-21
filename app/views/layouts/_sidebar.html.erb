@@ -6,7 +6,7 @@
         <li class="list-group-item bg-transparent border-0"><%= link_to 'インポート', import_form_items_path, class: 'text-white' %></li>
       <% end %>
       <li class="list-group-item bg-transparent border-0">
-        <%= link_to 'エクスポート', export_forecast_path(format: :csv), class: 'text-white' %>
+        <%= link_to 'エクスポート', export_forecast_path(format: :csv), class: 'text-white', id: 'export-link' %>
       </li>
       <% if current_user.admin? %>
         <li class="list-group-item bg-transparent border-0">
