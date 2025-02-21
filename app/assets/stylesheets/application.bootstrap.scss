@@ -2,16 +2,42 @@
 @use 'bootstrap/scss/bootstrap' as *;
 @use 'bootstrap-icons/font/bootstrap-icons' as *;
 
-.alert {
-  position: fixed;
-  top: 20px;
-  right: 20px;
-  z-index: 1000;
-  min-width: 300px;
-  background-color: rgba(255, 255, 255, 0.9); /* 背景色を設定 */
-  color: black; /* テキスト色を設定 */
-  border: 1px solid black; /* 境界線を設定 */
+.flash-message {
+  position: fixed !important;
+  top: 20px !important;
+  left: 50% !important;
+  transform: translateX(-50%) !important;
+  z-index: 1050 !important;
+  width: 90% !important;
+  max-width: 600px !important;
+  text-align: center !important;
+  padding: 1rem !important;
+  box-shadow: 0px 0px 10px rgba(0,0,0,0.1) !important;
 }
+
+.alert {
+  margin: 0 !important;
+  background-color: rgba(255, 255, 255, 0.9) !important;
+  color: black !important;
+  border: 1px solid black !important;
+  padding: 10px !important;
+  box-shadow: 0px 0px 10px rgba(0,0,0,0.1) !important;
+}
+
+#flash-message-alert {
+  position: fixed !important;
+  top: 20px !important;
+  right: 20px !important;
+  z-index: 1050 !important;
+  width: 90% !important;
+  max-width: 600px !important;
+  text-align: center !important;
+}
+
+.hide {
+  display: none !important;
+}
+
 
 html, body {
   height: 100%;
@@ -49,25 +75,25 @@ main {
 .card {
   max-width: 100%;
   margin: auto;
-  border-color: #000 !important; /* 枠線の色を濃く設定 */
-  border-width: 2px !important;  /* 枠線の太さを設定 */
+  border-color: #000 !important;
+  border-width: 2px !important;
 }
 
 .border {
-  border-color: #000 !important; /* すべての枠線の色を濃く設定 */
-  border-width: 2px !important;  /* すべての枠線の太さを設定 */
+  border-color: #000 !important;
+  border-width: 2px !important;
 }
 
 .login-button {
-  padding: 0.5rem 1rem; /* padding を調整 */
-  font-size: 14px; /* フォントサイズを小さく */
+  padding: 0.5rem 1rem;
+  font-size: 14px;
 }
 
 .custom-checkbox {
   -webkit-appearance: none;
   appearance: none;
   background-color: #fff;
-  border: 2px solid #000; /* 枠線の色と太さを調整 */
+  border: 2px solid #000;
   width: 1.25em;
   height: 1.25em;
   border-radius: 0.25em;
@@ -94,7 +120,6 @@ main {
   left: 0.3em;
 }
 
-/* サイドバー内のリンクとボタン */
 .sidebar a.text-white,
 .sidebar .btn-link,
 .sidebar .submit-button {
@@ -113,60 +138,24 @@ main {
   text-decoration: none;
 }
 
-/* レスポンシブデザイン */
 @media (max-width: 1200px) {
-  .alert {
+  .flash-message {
     top: 80px;
-    right: 15px;
     max-width: 500px;
   }
 }
 
 @media (max-width: 992px) {
-  .alert {
+  .flash-message {
     top: 60px;
-    right: 10px;
     max-width: 400px;
   }
 }
 
 @media (max-width: 768px) {
-  .alert {
+  .flash-message {
     top: 50px;
-    right: 5px;
     max-width: 300px;
   }
-}
-
-/* レスポンシブデザイン */
-@media (max-width: 1200px) {
-  .alert {
-    top: 80px;
-    right: 15px;
-    max-width: 500px;
-  }
-}
-
-@media (max-width: 992px) {
-  .alert {
-    top: 60px;
-    right: 10px;
-    max-width: 400px;
-  }
-}
-
-@media (max-width: 768px) {
-  .alert {
-    top: 50px;
-    right: 5px;
-    max-width: 300px;
-  }
-}
-.alert {
-  position: relative;
-  margin-top: 20px;
-  z-index: 1050;
-  width: 100%;
-  max-width: 100%;
 }
 

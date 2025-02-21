@@ -22,6 +22,13 @@
     </header>
   <% end %>
 
+  <% if flash[:notice] || flash[:alert] %>
+    <div class="flash-message alert alert-dismissible fade show" role="alert" id="flash-message-alert">
+      <%= flash[:notice] || flash[:alert] %>
+      <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+    </div>
+  <% end %>
+
   <div class="container-fluid flex-grow-1">
     <div class="row">
       <%= yield %>
@@ -38,6 +45,5 @@
   <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js"></script>
   <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
   <%= javascript_importmap_tags %>
-
 </body>
 </html>

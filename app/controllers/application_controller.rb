@@ -2,6 +2,7 @@ class ApplicationController < ActionController::Base
   before_action :configure_permitted_parameters, if: :devise_controller?
   before_action :authenticate_user!
   before_action :set_forecast_exists
+  before_action :reset_flash_messages  # フラッシュメッセージをリセットするフィルタを追加
 
   def create
   end
@@ -29,10 +30,14 @@ class ApplicationController < ActionController::Base
   def render_500
     render template: 'errors/internal_server_error', layout: false, status: :internal_server_error
   end
-  
+
   private
 
   def set_forecast_exists
     @forecast_exists = Item.where("order_date >= ?", 1.year.ago).exists?
+  end
+
+  def reset_flash_messages
+    flash.clear
   end
 end

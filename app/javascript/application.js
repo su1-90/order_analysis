@@ -12,5 +12,10 @@ function handleFlashMessages() {
   const alerts = document.querySelectorAll('[id^="flash-message-"]');
   alerts.forEach(alert => {
     alert.classList.add('show');
+    // フラッシュメッセージを5秒後に非表示にする
+    setTimeout(() => {
+      alert.classList.remove('show');
+      alert.classList.add('hide');
+    }, 5000);
   });
 }
