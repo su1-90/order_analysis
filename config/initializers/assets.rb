@@ -21,3 +21,4 @@ Rails.application.config.assets.precompile << "bootstrap.min.js"
 Rails.application.config.assets.configure do |env|
   env.register_compressor 'application/javascript', :terser, Terser::Compressor.new
 end
+

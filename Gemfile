@@ -57,3 +57,5 @@ gem "coffee-rails", "~> 4.2"
 
 
 gem 'mini_racer', platforms: :ruby
+
+gem 'terser'
