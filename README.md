@@ -27,10 +27,10 @@ https://docs.google.com/spreadsheets/d/1MYK-Xq9TiWdAyoOWqrJhX0jcO-QdpfM7lRy6tlCk
 https://www.figma.com/design/c6RvyDDqYy68EmfK6WMkfl/%E7%B5%82%E5%A3%B2%E7%AE%A1%E7%90%86%E3%82%B7%E3%82%B9%E3%83%86%E3%83%A0?node-id=0-1&t=bE4tGquU5HMMYKpc-1
 ---
 # ER図
-![Image](/public/er.png)
+<img width="817" alt="Image" src="https://github.com/user-attachments/assets/b2c513d5-a781-45f9-b683-a7ff70ab8de9" />
 ---
 # 画面遷移図
-![Image](/public/screen-transition-diagram.png)
+<img width="1028" alt="Image" src="https://github.com/user-attachments/assets/782a4406-adfc-496c-8d52-26794318140b" />
 
 # 留意事項
 + データの分析にはCatgptを用いているため正常にデータをインポートしてもうまく予測数量が出力されないことがあります。再度分析を実行するかデータを削除してやり直してみてください。
