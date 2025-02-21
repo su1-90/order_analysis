@@ -33,6 +33,14 @@ https://www.figma.com/design/c6RvyDDqYy68EmfK6WMkfl/%E7%B5%82%E5%A3%B2%E7%AE%A1%
 <img width="1028" alt="Image" src="https://github.com/user-attachments/assets/782a4406-adfc-496c-8d52-26794318140b" />
 
 # 留意事項
++ ゲストログインデータ
+　権限ユーザー：user_code: 'admin02', password: 'password'
+　一般ユーザー：user_code: 'user02', password: 'password',
++ 新規でログインできない場合　seedデータを改めて投入する必要があります。
+```
+heroku run rake db:seed
+```
+
 + データの分析にはCatgptを用いているため正常にデータをインポートしてもうまく予測数量が出力されないことがあります。再度分析を実行するかデータを削除してやり直してみてください。
 
 + informationは簡易的な使い方しか想定していないので保存できるデータは１つだけです。
