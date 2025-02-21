@@ -65,10 +65,10 @@ gem "ruby-openai"
 gem "kaminari"
 gem "bootstrap5-kaminari-views"
 gem "csb"
-gem "turbo-rails"
 
 
 gem 'sass-rails', '>= 6'
 gem 'uglifier', '>= 1.3.0'
 gem 'webpacker', '>= 5.0'
 
+gem 'nokogiri', '~> 1.18.2', platforms: [:ruby]
