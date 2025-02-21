@@ -80,6 +80,5 @@ test:
 #
 production:
   <<: *default
-  database: order_analysis_production
-  username: order_analysis
-  password: <%= ENV["ORDER_ANALYSIS_DATABASE_PASSWORD"] %>
+  url: <%= ENV["DATABASE_URL"] %>
+
