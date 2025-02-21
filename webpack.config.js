@@ -46,6 +46,12 @@ module.exports = {
   node: {
     global: true,
     __filename: 'mock',
-    __dirname: 'mock'
+    __dirname: 'mock',
+    // 削除したプロパティ
+    // dgram: 'empty',
+    // fs: 'empty',
+    // net: 'empty',
+    // tls: 'empty',
+    // child_process: 'empty'
   }
 };
