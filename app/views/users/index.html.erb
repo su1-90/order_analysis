@@ -51,11 +51,13 @@ document.addEventListener("DOMContentLoaded", function() {
 
   deleteButtons.forEach(button => {
     button.addEventListener("click", function(event) {
-      if (adminUsersCount <= 1) {
+      const userId = this.id.split('-')[1];
+      const userIsAdmin = <%= raw @users.map { |u| [u.id, u.admin?] }.to_h.to_json %>[userId];
+
+      if (userIsAdmin && adminUsersCount <= 1) {
         event.preventDefault();
         alert("権限ユーザーが1人しかいないため、削除できません。");
       } else {
-        // デフォルトの削除操作を実行
         const confirmation = confirm("本当に削除してもよろしいですか？");
         if (!confirmation) {
           event.preventDefault();
