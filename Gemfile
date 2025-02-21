@@ -72,3 +72,8 @@ gem 'uglifier', '>= 1.3.0'
 gem 'webpacker', '>= 5.0'
 
 gem 'nokogiri', '~> 1.18.2', platforms: [:ruby]
+
+# アセットパイプライン関連のGem
+gem 'sass-rails', '>= 6'
+gem 'uglifier', '>= 1.3.0'
+gem 'coffee-rails', '~> 4.2'
