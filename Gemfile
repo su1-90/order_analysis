@@ -51,7 +51,7 @@ gem "bootstrap5-kaminari-views"
 gem "csb"
 gem "sassc-rails"
 gem "uglifier", ">= 1.3.0"
-gem "webpacker", ">= 5.0"
+
 gem "nokogiri", "~> 1.18.2", platforms: [:ruby]
 gem "coffee-rails", "~> 4.2"
 
