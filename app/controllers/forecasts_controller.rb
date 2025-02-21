@@ -19,11 +19,17 @@ class ForecastsController < ApplicationController
     # 生成された予測データをログに記録
     Rails.logger.info "Final forecast data: #{forecast_data}"
 
-    csv_data = Item.to_csv(forecast_data)
-    Rails.logger.info "Generated CSV data: #{csv_data}"
+    begin
+      csv_data = Item.to_csv(forecast_data)
+      Rails.logger.info "Generated CSV data: #{csv_data}"
 
-    send_data csv_data, filename: "forecasts.csv"
-    return
+      send_data csv_data, filename: "forecasts.csv"
+    rescue => e
+      Rails.logger.error "Error generating or sending CSV data: #{e.message}"
+      Rails.logger.error e.backtrace.join("\n")
+      flash[:alert] = "CSVデータの生成または送信に失敗しました。"
+      redirect_to import_form_items_path
+    end
   end
 
   def export
@@ -46,10 +52,16 @@ class ForecastsController < ApplicationController
     # 生成された予測データをログに記録
     Rails.logger.info "Final forecast data: #{forecast_data}"
 
-    csv_data = Item.to_csv(forecast_data)
-    Rails.logger.info "Generated CSV data: #{csv_data}"
+    begin
+      csv_data = Item.to_csv(forecast_data)
+      Rails.logger.info "Generated CSV data: #{csv_data}"
 
-    send_data csv_data, filename: "forecasts.csv"
-    return
+      send_data csv_data, filename: "forecasts.csv"
+    rescue => e
+      Rails.logger.error "Error generating or sending CSV data: #{e.message}"
+      Rails.logger.error e.backtrace.join("\n")
+      flash[:alert] = "CSVデータの生成または送信に失敗しました。"
+      redirect_to root_path
+    end
   end
 end

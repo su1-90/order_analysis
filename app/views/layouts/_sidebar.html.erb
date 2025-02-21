@@ -3,11 +3,19 @@
   <ul class="list-group mt-auto">
     <% if current_user %>
       <% if current_user.admin? %>
-        <li class="list-group-item bg-transparent border-0"><%= link_to 'インポート', import_form_items_path, class: 'text-white' %></li>
+        <li class="list-group-item bg-transparent border-0">
+          <%= link_to 'インポート', import_form_items_path, class: 'text-white' %>
+        </li>
       <% end %>
-      <li class="list-group-item bg-transparent border-0">
-        <%= link_to 'エクスポート', export_forecast_path(format: :csv), class: 'text-white', id: 'export-link' %>
-      </li>
+      <% if @forecast_exists %>
+        <li class="list-group-item bg-transparent border-0">
+          <%= link_to 'エクスポート', export_forecast_path(format: :csv), class: 'text-white' %>
+        </li>
+      <% else %>
+        <li class="list-group-item bg-transparent border-0 text-white" style="cursor: not-allowed;">
+          エクスポート (データがありません)
+        </li>
+      <% end %>
       <% if current_user.admin? %>
         <li class="list-group-item bg-transparent border-0">
           <%= link_to 'Info 編集', Information.any? ? edit_information_path(Information.first) : new_information_path, class: 'text-white' %>

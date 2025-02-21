@@ -13,6 +13,7 @@ Rails.application.routes.draw do
       get :export
       get :import_form
       delete :reset_data
+      get :check_data
     end
   end
 

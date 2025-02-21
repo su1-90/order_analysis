@@ -1,6 +1,7 @@
 class ApplicationController < ActionController::Base
   before_action :configure_permitted_parameters, if: :devise_controller?
   before_action :authenticate_user!
+  before_action :set_forecast_exists
 
   def create
   end
@@ -29,4 +30,9 @@ class ApplicationController < ActionController::Base
     render template: 'errors/internal_server_error', layout: false, status: :internal_server_error
   end
   
+  private
+
+  def set_forecast_exists
+    @forecast_exists = Item.where("order_date >= ?", 1.year.ago).exists?
+  end
 end
