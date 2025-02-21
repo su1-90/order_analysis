@@ -26,7 +26,10 @@ module.exports = {
     alias: {
       'babel-loader': path.resolve(__dirname, 'node_modules/babel-loader')
     },
-    extensions: ['.js']
+    extensions: ['.js'],
+    fallback: {
+      crypto: false
+    }
   },
   plugins: [
     new webpack.LoaderOptionsPlugin({
