@@ -54,3 +54,6 @@ gem "uglifier", ">= 1.3.0"
 gem "webpacker", ">= 5.0"
 gem "nokogiri", "~> 1.18.2", platforms: [:ruby]
 gem "coffee-rails", "~> 4.2"
+
+
+gem 'mini_racer', platforms: :ruby
