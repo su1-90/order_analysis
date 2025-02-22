@@ -9,3 +9,14 @@ ja:
     attributes:
       information:
         message: ""
+  helpers:
+    label:
+      user:
+        user_code: "ユーザーコード"
+        password: "パスワード"
+  devise:
+    sessions:
+      new:
+        sign_in: "ログイン"
+        user_code: "ユーザーコード"
+        password: "パスワード"
