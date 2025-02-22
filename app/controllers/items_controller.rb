@@ -1,7 +1,7 @@
 class ItemsController < ApplicationController
   before_action :authenticate_user!
   before_action :set_item, only: [:edit, :update, :destroy]
-  layout "no_sidebar", only: [:import_form]
+  layout "no_sidebar", only: [:import_form, :import_csv]
 
   def import_form
     Rails.logger.info "Entering import_form action"
@@ -12,22 +12,19 @@ class ItemsController < ApplicationController
   def import_csv
     if params[:file].nil?
       flash.now[:alert] = "ファイルが選択されていません。"
-      render :import_form # 正しいビューにレンダリング
+      render :import_form
     else
       begin
         Item.import(params[:file])
-        flash.now[:notice] = "CSVファイルをインポートしました"
-        redirect_to import_form_items_path # 正しいページにリダイレクト
-      rescue Item::ImportError => e
-        flash.now[:alert] = "CSVファイルのインポートに失敗しました。#{e.message} #{e.errors.inspect}"
-        render :import_form # 正しいビューにレンダリング
-      rescue => e
-        flash.now[:alert] = "CSVファイルのインポートに失敗しました。#{e.message}"
-        render :import_form # 正しいビューにレンダリング
+        flash[:notice] = "CSVファイルをインポートしました"
+        redirect_to import_form_items_path
+      rescue Item::ImportError
+        render :import_form # メッセージを表示せず何もしない
+      rescue
+        render :import_form # メッセージを表示せず何もしない
       end
     end
   end
-  
 
   def export
     Rails.logger.info "Entering export action"
@@ -52,7 +49,6 @@ class ItemsController < ApplicationController
       render json: { message: '初期化するデータがありません。', type: 'alert' }
     end
   end
-
 
   private
 

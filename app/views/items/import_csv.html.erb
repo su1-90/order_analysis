@@ -1,0 +1,68 @@
+<div class="container mt-5">
+  <div class="row justify-content-center">
+    <div class="col-md-8">
+      <div class="card mb-4">
+        <div class="card-header">
+          CSVインポート
+        </div>
+        <div class="card-body">
+          <%= form_tag import_csv_items_path, multipart: true, id: "import-form" do %>
+            <div class="form-group">
+              <%= file_field_tag :file, class: "form-control", id: "file-input" %>
+              <div id="file-error" style="display: none; color: red;">
+                ファイルを選択してください。
+              </div>
+            </div>
+            <%= submit_tag "インポート", class: "btn btn-primary mt-2" %>
+          <% end %>
+        </div>
+      </div>
+
+      <div class="card mt-4">
+        <div class="card-header">
+          受注予測
+        </div>
+        <div class="card-body">
+          <%= form_with url: forecasts_path, method: :post do %>
+            <%= submit_tag "受注予測を実行", class: "btn btn-primary" %>
+          <% end %>
+        </div>
+      </div>
+
+      <div class="card mt-4">
+        <div class="card-header">
+          データの初期化
+        </div>
+        <div class="card-body">
+          <%= form_tag reset_data_items_path, method: :delete, id: "reset-form" do %>
+            <%= submit_tag "データの削除", class: "btn btn-danger", data: { confirm: '本当にデータを削除してもよろしいですか？' } %>
+          <% end %>
+          <div id="reset-success" style="display: none; color: green; margin-top: 10px;">保存していたデータをすべて削除しました。</div>
+          <div id="reset-error" style="display: none; color: red; margin-top: 10px;">初期化するデータがありません。</div>
+        </div>
+      </div>
+
+      <div class="mt-4 text-center">
+        <%= link_to "戻る", informations_path, class: "btn btn-secondary" %>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script>
+document.addEventListener("DOMContentLoaded", function() {
+  const form = document.getElementById("import-form");
+  const fileInput = document.getElementById("file-input");
+  const fileError = document.getElementById("file-error");
+  const flashMessages = document.getElementById("flash-messages");
+
+  form.addEventListener("submit", function(event) {
+    if (!fileInput.value) {
+      event.preventDefault();
+      fileError.style.display = "block";
+    } else {
+      fileError.style.display = "none";
+    }
+  });
+});
+</script>
