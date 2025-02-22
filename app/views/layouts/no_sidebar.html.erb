@@ -9,13 +9,15 @@
   <%= javascript_importmap_tags %>
 </head>
 <body>
-  <div class="container-fluid py-3 fixed-top header" style="background-color: #223A70; color: white;">
-    <div class="row">
-      <div class="col-12">
-        <h1 class="text-left">Order Analysis</h1>
+  <header>
+    <div class="container-fluid py-3 fixed-top header" style="background-color: #223A70; color: white;">
+      <div class="row">
+        <div class="col-12">
+          <h1 class="text-left">Order Analysis</h1>
+        </div>
       </div>
     </div>
-  </div>
+  </header>
 
   <div id="flash-messages-container">
     <%= turbo_frame_tag "flash-messages-frame" do %>
@@ -23,20 +25,16 @@
     <% end %>
   </div>
 
-  <div class="container mt-5 pt-5">
+  <main class="container mt-5 pt-5">
     <%= yield %>
-  </div>
+  </main>
 
-  <footer class="footer mt-auto py-3 bg-light" style="position: fixed; bottom: 0; width: 100%;">
+  <footer class="footer mt-auto">
     <div class="container d-flex justify-content-end">
       <span class="text-muted">© Order Analysis 2025</span>
     </div>
   </footer>
 
-  <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
-  <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js"></script>
-  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
   <%= javascript_importmap_tags %>
-
 </body>
 </html>
