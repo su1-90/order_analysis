@@ -32,10 +32,10 @@
             </div>
           <% end %>
           <!-- ゲストユーザーログインボタン -->
-          <div class="form-group row mb-3">
+          <div class="form-group row mb-3 mt-4"> <!-- ここで間隔を広げるためにmt-4クラスを追加 -->
             <div class="col-sm-9 offset-sm-3">
-              <%= button_to "ゲスト管理者ログイン", guest_admin_sign_in_path, method: :post, class: "btn btn-secondary mr-2" %>
-              <%= button_to "ゲストユーザーログイン", guest_user_sign_in_path, method: :post, class: "btn btn-secondary" %>
+              <%= button_to "ゲスト管理者ログイン", guest_admin_sign_in_path, method: :post, class: "btn btn-secondary mr-2 mb-2" %>
+              <%= button_to "ゲストユーザーログイン", guest_user_sign_in_path, method: :post, class: "btn btn-secondary mb-2" %> <!-- mb-2クラスを追加 -->
             </div>
           </div>
         </div>
