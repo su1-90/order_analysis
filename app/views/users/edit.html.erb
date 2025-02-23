@@ -11,21 +11,21 @@
         <div class="form-group row" style="margin-bottom: 20px;">
           <label class="col-sm-4 col-form-label text-right" for="user-code-input">ユーザーコード</label>
           <div class="col-sm-8">
-            <%= form.text_field :user_code, class: "form-control", id: "user-code-input" %>
+            <%= form.text_field :user_code, class: "form-control", id: "user-code-input", placeholder: "ユーザーコードを入力してください" %>
           </div>
         </div>
 
         <div class="form-group row" style="margin-bottom: 20px;">
           <label class="col-sm-4 col-form-label text-right" for="password-input">パスワード</label>
           <div class="col-sm-8">
-            <%= form.password_field :password, class: "form-control", id: "password-input" %>
+            <%= form.password_field :password, class: "form-control", id: "password-input", placeholder: "パスワードを入力してください" %>
           </div>
         </div>
 
         <div class="form-group row" style="margin-bottom: 20px;">
           <label class="col-sm-4 col-form-label text-right" for="password-confirmation-input">パスワード確認</label>
           <div class="col-sm-8">
-            <%= form.password_field :password_confirmation, class: "form-control", id: "password-confirmation-input" %>
+            <%= form.password_field :password_confirmation, class: "form-control", id: "password-confirmation-input", placeholder: "パスワード確認を入力してください" %>
           </div>
         </div>
 
