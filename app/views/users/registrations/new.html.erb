@@ -1,45 +1,43 @@
-<div class="container mt-5 pt-5" style="margin-top: 200px; text-align: center;">
-  <h2 class="text-center">ユーザー登録</h2>
-
-  <div class="card" style="max-width: 50%; margin: 0 auto;">
-    <div class="card-body">
-      <div id="error-message" style="display: none; color: red;"></div>
-
-      <%= form_with(model: @user, url: users_path, local: true, id: "new-user-form") do |f| %>
-        <div class="form-group row" style="margin-bottom: 20px;">
-          <label class="col-sm-4 col-form-label text-right" for="user-code-input">ユーザーコード</label>
-          <div class="col-sm-8">
-            <%= f.text_field :user_code, autofocus: true, class: "form-control", id: "user-code-input" %>
-          </div>
+<div class="container registration-container d-flex align-items-center justify-content-center mt-5">
+  <div class="row justify-content-center w-100">
+    <div class="col-md-8">
+      <div class="card shadow">
+        <div class="card-body">
+          <h2 class="text-center mb-4" style="color: #223A70;">ユーザー登録</h2>
+          <div id="error-message" style="display: none; color: red;"></div>
+          <%= form_with(model: @user, url: users_path, local: true, id: "new-user-form") do |f| %>
+            <div class="form-group row mb-3">
+              <%= f.label :user_code, "ユーザーコード", class: "col-sm-4 col-form-label text-right" %>
+              <div class="col-sm-8">
+                <%= f.text_field :user_code, autofocus: true, class: "form-control", id: "user-code-input", placeholder: "ユーザーコードを入力してください" %>
+              </div>
+            </div>
+            <div class="form-group row mb-3">
+              <%= f.label :password, "パスワード", class: "col-sm-4 col-form-label text-right" %>
+              <div class="col-sm-8">
+                <%= f.password_field :password, autocomplete: "off", class: "form-control", id: "password-input", placeholder: "パスワードを入力してください" %>
+              </div>
+            </div>
+            <div class="form-group row mb-3">
+              <%= f.label :password_confirmation, "パスワード確認", class: "col-sm-4 col-form-label text-right" %>
+              <div class="col-sm-8">
+                <%= f.password_field :password_confirmation, autocomplete: "off", class: "form-control", id: "password-confirmation-input", placeholder: "パスワード確認を入力してください" %>
+              </div>
+            </div>
+            <div class="form-group row d-flex align-items-center mb-3">
+              <%= f.label :admin, "管理者権限", class: "col-sm-4 col-form-label text-right mb-0 mr-2" %>
+              <div class="col-sm-8 d-flex align-items-center">
+                <%= f.check_box :admin, id: "admin-checkbox", class: "form-check-input custom-checkbox" %>
+              </div>
+            </div>
+            <div class="form-group d-flex justify-content-center mb-3">
+              <%= link_to "戻る", informations_path, class: "btn btn-secondary", data: { turbo: false } %>
+              <span class="mx-2">|</span>
+              <%= f.submit "登録する", class: "btn btn-primary" %>
+            </div>
+          <% end %>
         </div>
-
-        <div class="form-group row" style="margin-bottom: 20px;">
-          <label class="col-sm-4 col-form-label text-right" for="password-input">パスワード</label>
-          <div class="col-sm-8">
-            <%= f.password_field :password, autocomplete: "off", class: "form-control", id: "password-input" %>
-          </div>
-        </div>
-
-        <div class="form-group row" style="margin-bottom: 20px;">
-          <label class="col-sm-4 col-form-label text-right" for="password-confirmation-input">パスワード確認</label>
-          <div class="col-sm-8">
-            <%= f.password_field :password_confirmation, autocomplete: "off", class: "form-control", id: "password-confirmation-input" %>
-          </div>
-        </div>
-
-        <div class="form-group row d-flex align-items-center" style="margin-bottom: 20px;">
-          <label class="col-sm-4 col-form-label text-right mb-0 mr-2" for="admin-checkbox">管理者権限</label>
-          <div class="col-sm-8 d-flex align-items-center">
-            <%= f.check_box :admin, id: "admin-checkbox", class: "form-check-input custom-checkbox" %>
-          </div>
-        </div>
-
-        <div class="form-group d-flex justify-content-center" style="margin-bottom: 20px;">
-          <%= link_to "戻る", informations_path, class: "btn btn-secondary", data: { turbo: false } %>
-          <span class="mx-2">|</span>
-          <%= f.submit "登録する", class: "btn btn-primary" %>
-        </div>
-      <% end %>
+      </div>
     </div>
   </div>
 </div>

@@ -159,3 +159,20 @@ main {
     max-width: 300px;
   }
 }
+
+/* 追加コード */
+.registration-container {
+  margin-top: 5rem;
+  padding-bottom: 70px; /* フッターの高さ分のスペースを確保 */
+  flex: 1;
+}
+
+.registration-footer {
+  background: #f8f9fa;
+  padding: 1rem 0;
+  width: 100%;
+  margin-top: auto;
+  position: fixed;
+  bottom: 0;
+  z-index: 1020;
+}
