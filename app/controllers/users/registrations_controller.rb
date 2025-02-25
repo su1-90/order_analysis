@@ -1,5 +1,5 @@
 class Users::RegistrationsController < Devise::RegistrationsController
-  layout "registration_without_sidebar", only: [:new, :create]
+  layout "no_sidebar", only: [:new, :create]
   prepend_before_action :admin_only, only: [:new, :create]
   skip_before_action :require_no_authentication, only: [:new, :create]
 
